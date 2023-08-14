@@ -1,0 +1,32 @@
+<div class="container mt-5" style="border-radius: 15px; height: 100%; background-color: lightgray;">
+    <div class="row pt-3 px-2">
+        <div class="col-2">
+            <h2 style="font-weight: 700;">Tareas</h2>
+        </div>
+        <div class="col-10" style="text-align: end;">
+            <button type="button" class="btn btn-success" routerLink="/crear"><i class="bi bi-plus-square"></i> Crear Tarea
+            </button>
+        </div>
+    </div>
+    <hr>
+    <div class="row my-5 pb-5 px-4">
+        <div class="card mx-2 my-2" style="width: 18rem;" *ngFor="let tarea of data.tareas">
+            <div class="card-body">
+                <h5 class="card-title">{{tarea.nombreTarea}} </h5>
+                <h6 class="card-subtitle mb-2 text-muted" *ngIf="tarea.fechaEntrega != null; else fecha">
+                    {{tarea.fechaEntrega}}</h6>
+                <ng-template #fecha>
+                    <p class="card-subtitle mb-2 text-muted">Sin fecha de Entrega</p>
+                </ng-template>
+                <p class="card-text">{{tarea.descripcion}}</p>
+                <button class="btn btn-primary mx-2" routerLink="/editar/{{tarea.idTarea}}"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-danger mx-2" (click)="deleteTarea(tarea.idTarea)"><i
+                        class="bi bi-trash3"></i></button>
+            </div>
+            <div class="container text-center mb-2"
+                style="color: white; width: 60%; border-radius: 15px; background-color: {{tarea.estado == 'Pendiente' ? 'chocolate': tarea.estado == 'En Progreso' ? 'gold': 'greenyellow'}}">
+                <b>{{tarea.estado}}</b>
+            </div>
+        </div>
+    </div>
+</div>

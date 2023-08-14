@@ -1,0 +1,26 @@
+<div class="container mt-5" style="border-radius: 15px; height: auto; background-color: lightgray;">
+    <div class="row pt-3 px-2">
+        <div class="col-2">
+            <h2 style="font-weight: 700;">Tareas</h2>
+        </div>
+    </div>
+    <hr>
+    <div class="my-5 pb-5 px-4">
+        <form #tareasForm="ngForm" (ngSubmit)="addTarea(tareasForm.value)">
+            <h2>Crear Tarea</h2>
+            <div class="mb-3">
+                <label for="nombreTarea" class="form-label">Nombre Tarea</label>
+                <input ngModel type="text" class="form-control" id="nombreTarea" name="nombreTarea" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input ngModel type="text" class="form-control" id="descripcion" name="descripcion" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaEntrega" class="form-label">Fecha Entrega</label>
+                <input ngModel type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+</div>
